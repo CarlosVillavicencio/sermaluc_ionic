@@ -19,14 +19,12 @@ export class NotificationsService {
   constructor(
     public platform: Platform,
     private router: Router,
-    // private localNotifications: LocalNotifications
   ) { }
 
   initialize() {
     if (this.platform.is("capacitor")) {
       PushNotifications.requestPermissions().then(result => {
         if (result.receive === 'granted') {
-          // Register with Apple / Google to receive push via APNS/FCM
           console.log("permisos concedidos")
           PushNotifications.register();
           this.addListeners();
@@ -90,7 +88,6 @@ export class NotificationsService {
 
   async cancelAllLocalNotifications() {
     const pending = await LocalNotifications.getPending();
-    // LocalNotifications.cancel({ notifications: [] });
     if (pending.notifications.length > 0) {
       LocalNotifications.cancel({ notifications: pending.notifications });
     }

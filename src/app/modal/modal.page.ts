@@ -26,9 +26,7 @@ export class ModalPage implements OnInit {
   async updateTask() {
     const timestamp = new Date(this.task.fechaYHora).getTime();
 
-  // Actualiza la tarea con la fecha formateada
     this.task.fechaYHora = timestamp;
-
 
     this.dataService.updateTask(this.task);
     const toast = await this.toastCtrl.create({
