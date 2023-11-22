@@ -6,6 +6,7 @@ export interface Task {
   id?: string;
   title: string;
   text: string;
+  fechaYHora: Date;
 }
 
 @Injectable({
@@ -19,12 +20,12 @@ export class DataService {
 
   getTasks(): Observable<Task[]> {
     const tasksRef = collection(this.firestore, 'tasks');
-    return collectionData(tasksRef, { idField: 'id'}) as Observable<Task[]>;
+    return collectionData(tasksRef, { idField: 'id' }) as Observable<Task[]>;
   }
 
   getTaskById(id: string): Observable<Task> {
     const taskDocRef = doc(this.firestore, `tasks/${id}`);
-    return docData(taskDocRef, { idField: 'id'}) as Observable<Task>;
+    return docData(taskDocRef, { idField: 'id' }) as Observable<Task>;
   }
 
   addTask(task: Task) {
@@ -39,6 +40,6 @@ export class DataService {
 
   updateTask(task: Task) {
     const taskDocRef = doc(this.firestore, `tasks/${task.id}`);
-    return updateDoc(taskDocRef, { title: task.title, text: task.text });
+    return updateDoc(taskDocRef, { title: task.title, text: task.text, fechaYHora: task.fechaYHora });
   }
 }

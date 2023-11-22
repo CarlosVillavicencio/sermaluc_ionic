@@ -14,6 +14,13 @@
       <ion-label position="stacked">Texto</ion-label>
       <ion-textarea [(ngModel)]="task.text"></ion-textarea>
     </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Fecha y Hora</ion-label>
+      <ion-datetime
+        displayFormat="MMM DD, YYYY HH:mm"
+        [(ngModel)]="task.fechaYHora"
+      ></ion-datetime>
+    </ion-item>
   </div>
 
   <ion-button expand="block" color="success" (click)="updateTask()">

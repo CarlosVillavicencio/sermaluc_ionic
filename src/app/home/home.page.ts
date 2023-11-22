@@ -19,11 +19,14 @@ export class HomePage {
     private modalCtrl: ModalController,
     private notificationsService: NotificationsService
   ) {
+    this.notificationsService.initialize();
+    this.notificationsService.cancelAllLocalNotifications();
     this.dataService.getTasks().subscribe(res => {
       console.log(res);
       this.tasks = res
+      console.log("recibio cambio");
+      this.notificationsService.scheduleNewNotifications(res);
     });
-    this.notificationsService.initialize();
   }
 
   async openTask(task: Task) {
@@ -50,6 +53,11 @@ export class HomePage {
           placeholder: 'Descripción de mi tarea',
           type: 'textarea'
         },
+        {
+          name: 'fechaYHora',
+          type: 'datetime-local',
+          label: 'Fecha y Hora',
+        },
       ],
       buttons: [
         {
@@ -59,7 +67,7 @@ export class HomePage {
         {
           text: 'Add',
           handler: (res) => {
-            this.dataService.addTask({title: res.title, text: res.text});
+            this.dataService.addTask({title: res.title, text: res.text, fechaYHora: res.fechaYHora});
           }
         }
       ]

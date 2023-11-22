@@ -9,8 +9,8 @@ import { ModalController, ToastController } from '@ionic/angular';
 })
 export class ModalPage implements OnInit {
   @Input() id: string = '';
-  task: Task = { id: '', title: '', text: '' };
-  
+  task: Task = { id: '', title: '', text: '', fechaYHora: new Date() };
+
   constructor(
     private dataService: DataService,
     private modalCtrl: ModalController,
@@ -30,6 +30,7 @@ export class ModalPage implements OnInit {
       duration: 1000
     });
     await toast.present();
+    this.modalCtrl.dismiss();
   }
   async deleteTask() {
     await this.dataService.deleteTask(this.task);
