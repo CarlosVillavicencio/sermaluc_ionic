@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "503919539493",
+    "project_id": "sermaluc-cvv",
+    "storage_bucket": "sermaluc-cvv.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503919539493:android:a73a3fe7f5742a25df56cc",
+        "android_client_info": {
+          "package_name": "com.carlosvv.sermalucapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6g1v1Gb9Xhyv1LCjCnvPlBhRD-f3BHzA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

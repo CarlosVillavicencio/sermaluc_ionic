@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DataService, Task } from '../services/data.service';
 import { AlertController, ModalController } from '@ionic/angular';
 import { ModalPage } from '../modal/modal.page';
+import { NotificationsService } from '../services/notifications.service';
 
 @Component({
   selector: 'app-home',
@@ -15,12 +16,14 @@ export class HomePage {
   constructor(
     private dataService: DataService,
     private alertCtrl: AlertController,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private notificationsService: NotificationsService
   ) {
     this.dataService.getTasks().subscribe(res => {
       console.log(res);
       this.tasks = res
     });
+    this.notificationsService.initialize();
   }
 
   async openTask(task: Task) {
