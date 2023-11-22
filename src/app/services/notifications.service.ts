@@ -113,13 +113,16 @@ export class NotificationsService {
       tasks.forEach(tarea => {
         
         idToTask++;
+
+        const notificationTime = new Date(tarea.fechaYHora);
+
         LocalNotifications.schedule({
           notifications: [
             {
               title: tarea.title,
               body: tarea.text,
               id: idToTask, // un identificador único para la notificación
-              schedule: { at: new Date(tarea.fechaYHora) } // especifica la fecha y hora
+              schedule: { at: notificationTime } // especifica la fecha y hora
             }
           ]
         });

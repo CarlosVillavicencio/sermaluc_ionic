@@ -6,7 +6,7 @@ export interface Task {
   id?: string;
   title: string;
   text: string;
-  fechaYHora: Date;
+  fechaYHora: number;
 }
 
 @Injectable({

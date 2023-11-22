@@ -67,7 +67,9 @@ export class HomePage {
         {
           text: 'Add',
           handler: (res) => {
-            this.dataService.addTask({title: res.title, text: res.text, fechaYHora: res.fechaYHora});
+            const timestamp = new Date(res.fechaYHora).getTime();
+
+            this.dataService.addTask({title: res.title, text: res.text, fechaYHora: timestamp});
           }
         }
       ]

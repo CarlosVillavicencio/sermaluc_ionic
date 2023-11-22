@@ -9,7 +9,7 @@ import { ModalController, ToastController } from '@ionic/angular';
 })
 export class ModalPage implements OnInit {
   @Input() id: string = '';
-  task: Task = { id: '', title: '', text: '', fechaYHora: new Date() };
+  task: Task = { id: '', title: '', text: '', fechaYHora: 0 };
 
   constructor(
     private dataService: DataService,
@@ -24,6 +24,12 @@ export class ModalPage implements OnInit {
   }
 
   async updateTask() {
+    const timestamp = new Date(this.task.fechaYHora).getTime();
+
+  // Actualiza la tarea con la fecha formateada
+    this.task.fechaYHora = timestamp;
+
+
     this.dataService.updateTask(this.task);
     const toast = await this.toastCtrl.create({
       message: 'Tarea Actualizada!',
